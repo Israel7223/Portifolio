@@ -3,7 +3,7 @@
 # Script para construir o projeto Angular para o Cloudflare Pages
 
 # Configurar node
-export NODE_VERSION="18.18.0"
+export NODE_VERSION="18.19.1"
 
 # Limpar a pasta dist
 echo "Limpando pasta dist..."
