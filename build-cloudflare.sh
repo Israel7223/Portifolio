@@ -11,11 +11,11 @@ rm -rf dist
 
 # Instalar dependências
 echo "Instalando dependências..."
-npm install --legacy-peer-deps --no-fund --no-audit
+yarn install --immutable
 
 # Construir o projeto
 echo "Construindo o projeto..."
-npm run build
+yarn run build
 
 # Copiar arquivos adicionais
 echo "Copiando arquivos adicionais..."
