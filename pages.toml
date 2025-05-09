@@ -2,10 +2,10 @@
 command = "npm install --legacy-peer-deps && npm run build"
 destination = "dist/cloudflare"
 node_compatibility_date = "2023-11-21"
-node_version = "16.20.0"
+node_version = "18.17.1"
 
 [build.environment]
-NODE_VERSION = "16.20.0"
+NODE_VERSION = "18.17.1"
 NODE_OPTIONS = "--max-old-space-size=4096"
 NPM_CONFIG_LEGACY_PEER_DEPS = "true"
 
