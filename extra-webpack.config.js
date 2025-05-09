@@ -3,8 +3,14 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 
 module.exports = (config, options) => {
-  // Carrega o arquivo .env conforme o ambiente (dev ou prod)
-  const environment = options.configuration === 'production' ? '.env.production' : '.env';
+  // Determina o arquivo .env a ser usado com base na configuração
+  let environment = '.env';
+  
+  if (options.configuration === 'production') {
+    environment = '.env.production';
+  } else if (options.configuration === 'cloudflare') {
+    environment = '.cloudflare.env';
+  }
   
   // Tenta ler o arquivo .env específico, caso não exista, usa o .env padrão
   const currentPath = process.cwd();

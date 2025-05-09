@@ -1,0 +1,17 @@
+name = "portifolio"
+type = "webpack"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+
+[site]
+bucket = "dist/cloudflare"
+entry-point = "dist/cloudflare"
+
+[build]
+command = "npm run build:cloudflare"
+upload.format = "service-worker"
+
+[build.upload]
+format = "service-worker" 

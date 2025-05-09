@@ -11,7 +11,7 @@ import { HeaderComponent } from './shared/components/header.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'portfolio-magaivin';
+  title = 'portifolio';
   
   constructor(
     @Inject(PLATFORM_ID) private platformId: object

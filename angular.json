@@ -10,7 +10,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "portfolio-magaivin": {
+    "portifolio": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -39,6 +39,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -56,12 +61,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "1.5MB",
-                  "maximumError": "3MB"
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "12kB",
-                  "maximumError": "15kB"
+                  "maximumError": "20kB"
                 }
               ],
               "optimization": true,
@@ -72,6 +77,34 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "cloudflare": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": true,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2MB",
+                  "maximumError": "5MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "15kB",
+                  "maximumError": "20kB"
+                }
+              ]
             },
             "development": {
               "optimization": false,
@@ -85,10 +118,10 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "portfolio-magaivin:build:production"
+              "buildTarget": "portifolio:build:production"
             },
             "development": {
-              "buildTarget": "portfolio-magaivin:build:development"
+              "buildTarget": "portifolio:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -127,5 +160,17 @@
         }
       }
     }
+  },
+  "serve-ssr": {
+    "builder": "@nguniversal/builders:ssr-dev-server",
+    "configurations": {
+      "development": {
+        "buildTarget": "portifolio:build:development"
+      },
+      "production": {
+        "buildTarget": "portifolio:build:production"
+      }
+    },
+    "defaultConfiguration": "development"
   }
 }

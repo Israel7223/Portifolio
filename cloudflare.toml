@@ -1,0 +1,8 @@
+[build]
+command = "npm run build:cloudflare"
+publish = "dist/cloudflare"
+node_version = "18.17.1"
+
+[build.environment]
+NODE_VERSION = "18.17.1"
+NODE_OPTIONS = "--max-old-space-size=4096" 
