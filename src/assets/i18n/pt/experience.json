@@ -1,0 +1,23 @@
+{
+  "title": "Minha Experiência",
+  "items": [
+    {
+      "years": "2012 - 2013",
+      "position": "Analista de Dados Jr.",
+      "company": "Tech Solutions",
+      "description": "Iniciou a carreira analisando dados de negócios e criando relatórios para apoiar processos de tomada de decisão."
+    },
+    {
+      "years": "2014 - 2016",
+      "position": "Cientista de Dados",
+      "company": "AI Innovations",
+      "description": "Desenvolveu modelos de aprendizado de máquina para segmentação de clientes e análises preditivas."
+    },
+    {
+      "years": "2017 - Presente",
+      "position": "Cientista de Dados Sr.",
+      "company": "Google",
+      "description": "Liderando projetos de PLN, incluindo análise de sentimentos e reconhecimento de intenções para assistentes de voz."
+    }
+  ]
+} 

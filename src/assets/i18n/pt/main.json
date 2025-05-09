@@ -1,0 +1,165 @@
+{
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "whatIDo": "O Que Eu Faço",
+    "resume": "Resumo",
+    "portfolio": "Projetos",
+    "certificates": "Certificados",
+    "client": "Clientes",
+    "contact": "Contato"
+  },
+  "home": {
+    "welcome": "Bem-vindo",
+    "position": "cientista de dados",
+    "basedIn": "baseado em",
+    "learnMore": "Saiba Mais"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Conheça minha história",
+    "knowMeMore": "Conheça-me Melhor",
+    "iam": "Eu sou",
+    "position": "um Cientista de Dados",
+    "bio1": "Cientista de Dados experiente com histórico comprovado de 4 anos em Processamento de Linguagem Natural (PLN) e 5 anos em previsão de séries temporais. Proficiente em tecnologias de PLN de ponta, incluindo LlamaIndex, RAG, augmentação de dados, LangChain e outras.",
+    "bio2": "Habilidoso em bibliotecas Python como NumPy, Pandas, Scikit-learn (Sklearn), Matplotlib e PyTorch. Experiente em análise de redes usando Gephi e bibliotecas Python como Networkx e Py3plex. Possui sólida formação matemática em aprendizado profundo e grande interesse em tecnologias pioneiras neste domínio.",
+    "name": "Nome",
+    "email": "E-mail",
+    "age": "Idade",
+    "from": "De",
+    "downloadCV": "Baixar CV"
+  },
+  "whatIDo": {
+    "title": "O Que Eu Faço",
+    "services": {
+      "0": {
+        "title": "Análise de Dados",
+        "description": "Expertise em analisar conjuntos de dados complexos para extrair insights significativos e orientar decisões baseadas em dados."
+      },
+      "1": {
+        "title": "Aprendizado de Máquina",
+        "description": "Construção de modelos preditivos usando técnicas de aprendizado supervisionado e não supervisionado para resolver problemas de negócios."
+      },
+      "2": {
+        "title": "PLN & Análise Textual",
+        "description": "Especializado em processamento de linguagem natural para classificação de texto, análise de sentimentos e extração de informações."
+      },
+      "3": {
+        "title": "Previsão de Séries Temporais",
+        "description": "Desenvolvimento de modelos para prever valores futuros com base em valores observados anteriormente com alta precisão."
+      },
+      "4": {
+        "title": "Visualização de Dados",
+        "description": "Criação de representações visuais informativas de dados para comunicar resultados de forma eficaz às partes interessadas."
+      },
+      "5": {
+        "title": "Aprendizado Profundo",
+        "description": "Implementação de redes neurais para tarefas complexas de reconhecimento de padrões em vários domínios."
+      }
+    }
+  },
+  "portfolio": {
+    "title": "Meus Projetos",
+    "description": "Confira alguns dos meus trabalhos mais recentes em ciência de dados e aprendizado de máquina.",
+    "technologies": "Tecnologias",
+    "viewOnGithub": "Ver no GitHub",
+    "viewDemo": "Ver Demonstração",
+    "liveDemo": "Ver Demonstração",
+    "loading": "Carregando projetos...",
+    "error": "Ocorreu um erro ao carregar os projetos. Por favor, tente novamente.",
+    "retry": "Tentar novamente",
+    "noProjects": "Nenhum projeto encontrado.",
+    "previousProject": "Projeto anterior",
+    "nextProject": "Próximo projeto"
+  },
+  "resume": {
+    "title": "Resumo",
+    "education": {
+      "title": "Minha Formação",
+      "items": [
+        {
+          "years": "2000 - 2004",
+          "degree": "Ciência da Computação",
+          "institution": "Universidade Internacional",
+          "description": "Foco em algoritmos, estruturas de dados e fundamentos da computação com especialização em análise de dados."
+        },
+        {
+          "years": "2005 - 2008",
+          "degree": "Bacharelado",
+          "institution": "Universidade da Califórnia",
+          "description": "Estudou matemática avançada, estatística e programação com honras em aplicações de ciência de dados."
+        },
+        {
+          "years": "2009 - 2012",
+          "degree": "Mestrado",
+          "institution": "Universidade Harvard",
+          "description": "Especializado em aprendizado de máquina e inteligência artificial com pesquisa em processamento de linguagem natural."
+        }
+      ]
+    },
+    "experience": {
+      "title": "Minha Experiência",
+      "items": [
+        {
+          "years": "2012 - 2013",
+          "position": "Analista de Dados Jr.",
+          "company": "Tech Solutions",
+          "description": "Iniciou a carreira analisando dados de negócios e criando relatórios para apoiar processos de tomada de decisão."
+        },
+        {
+          "years": "2014 - 2016",
+          "position": "Cientista de Dados",
+          "company": "AI Innovations",
+          "description": "Desenvolveu modelos de aprendizado de máquina para segmentação de clientes e análises preditivas."
+        },
+        {
+          "years": "2017 - Presente",
+          "position": "Cientista de Dados Sr.",
+          "company": "Google",
+          "description": "Liderando projetos de PLN, incluindo análise de sentimentos e reconhecimento de intenções para assistentes de voz."
+        }
+      ]
+    },
+    "skills": {
+      "title": "Minhas Habilidades",
+      "years": "Anos"
+    },
+    "downloadCV": "Baixar CV"
+  },
+  "contact": {
+    "getInTouch": "Entre em Contato",
+    "address": "ENDEREÇO",
+    "addressLine1": "4º Andar, Lote Nº 22,",
+    "addressLine2": "145 Murphy Canyon Rd.",
+    "addressLine3": "San Diego CA 2028",
+    "followMe": "SIGA-ME",
+    "sendUsNote": "ENVIE UMA MENSAGEM",
+    "name": "Nome",
+    "email": "E-mail",
+    "message": "Conte-nos mais sobre suas necessidades...",
+    "sendMessage": "Enviar Mensagem",
+    "copyright": "Todos os Direitos Reservados.",
+    "terms": "Termos & Política",
+    "disclaimer": "Aviso Legal",
+    "nameRequired": "Nome é obrigatório",
+    "emailRequired": "Email é obrigatório",
+    "emailInvalid": "Por favor, insira um email válido",
+    "messageRequired": "Mensagem é obrigatória",
+    "messageMinLength": "Mensagem deve ter pelo menos 10 caracteres",
+    "captchaRequired": "Por favor, confirme que você não é um robô",
+    "messageSent": "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+    "messageFailed": "Erro ao enviar mensagem. Por favor, tente novamente.",
+    "sending": "Enviando...",
+    "developedBy": "Desenvolvido por Igor Moreira de Sousa"
+  },
+  "certificates": {
+    "title": "Meus Certificados",
+    "subtitle": "Qualificações e credenciais obtidas",
+    "loading": "Carregando certificados...",
+    "noCertificates": "Nenhum certificado encontrado.",
+    "issuer": "Emissor",
+    "issueDate": "Emitido em",
+    "credential": "ID da Credencial",
+    "viewCertificate": "Ver Certificado"
+  }
+} 

@@ -1,0 +1,119 @@
+<section id="contact" class="contact-section">
+  <div class="container main-content">
+    <div class="section-title text-center">
+      <h2 class="contact-title">{{ 'contact.getInTouch' | translate }}</h2>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="contact-form">
+          <h3>{{ 'contact.sendUsNote' | translate }}</h3>
+          
+          <!-- Alerta de sucesso -->
+          <div *ngIf="submitSuccess" class="alert alert-success">
+            {{ 'contact.messageSent' | translate }}
+            <button type="button" class="btn-close float-end" (click)="resetForm()" aria-label="Fechar">
+              <span class="visually-hidden">Fechar</span>
+            </button>
+          </div>
+          
+          <!-- Alerta de erro -->
+          <div *ngIf="submitError" class="alert alert-danger">
+            {{ 'contact.messageFailed' | translate }}
+            <button type="button" class="btn-close float-end" (click)="submitError = false" aria-label="Fechar">
+              <span class="visually-hidden">Fechar</span>
+            </button>
+          </div>
+          
+          <!-- Formulário de contato -->
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!submitSuccess">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <input type="text" 
+                         class="form-control" 
+                         formControlName="name" 
+                         placeholder="{{ 'contact.name' | translate }}" 
+                         [ngClass]="{'is-invalid': contactForm.get('name')?.invalid && contactForm.get('name')?.touched}">
+                  <div class="invalid-feedback" *ngIf="contactForm.get('name')?.errors?.['required'] && contactForm.get('name')?.touched">
+                    {{ 'contact.nameRequired' | translate }}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <input type="email" 
+                         class="form-control" 
+                         formControlName="email" 
+                         placeholder="{{ 'contact.email' | translate }}"
+                         [ngClass]="{'is-invalid': contactForm.get('email')?.invalid && contactForm.get('email')?.touched}">
+                  <div class="invalid-feedback" *ngIf="contactForm.get('email')?.errors?.['required'] && contactForm.get('email')?.touched">
+                    {{ 'contact.emailRequired' | translate }}
+                  </div>
+                  <div class="invalid-feedback" *ngIf="contactForm.get('email')?.errors?.['email'] && contactForm.get('email')?.touched">
+                    {{ 'contact.emailInvalid' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <textarea class="form-control" 
+                        rows="6" 
+                        formControlName="message" 
+                        placeholder="{{ 'contact.message' | translate }}"
+                        [ngClass]="{'is-invalid': contactForm.get('message')?.invalid && contactForm.get('message')?.touched}"></textarea>
+              <div class="invalid-feedback" *ngIf="contactForm.get('message')?.errors?.['required'] && contactForm.get('message')?.touched">
+                {{ 'contact.messageRequired' | translate }}
+              </div>
+              <div class="invalid-feedback" *ngIf="contactForm.get('message')?.errors?.['minlength'] && contactForm.get('message')?.touched">
+                {{ 'contact.messageMinLength' | translate }}
+              </div>
+            </div>
+            
+            <!-- reCAPTCHA -->
+            <div class="form-group mb-3 d-flex justify-content-center">
+              <re-captcha
+                formControlName="recaptcha"
+                [siteKey]="RECAPTCHA_SITE_KEY"
+                [ngClass]="{'is-invalid': contactForm.get('recaptcha')?.invalid && contactForm.get('recaptcha')?.touched}">
+              </re-captcha>
+              <div class="invalid-feedback d-block text-center" *ngIf="contactForm.get('recaptcha')?.invalid && contactForm.get('recaptcha')?.touched">
+                {{ 'contact.captchaRequired' | translate }}
+              </div>
+            </div>
+            
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
+                <span *ngIf="!isSubmitting">{{ 'contact.sendMessage' | translate }}</span>
+                <span *ngIf="isSubmitting">
+                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  {{ 'contact.sending' | translate }}
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="text-center mb-3">
+        <p>© {{ currentYear }} {{ 'contact.copyright' | translate }}</p>
+      </div>
+      <div class="text-center developer-info">
+        <p>{{ 'contact.developedBy' | translate }}</p>
+        <div class="social-icons">
+          <a href="https://github.com/Igorms27" target="_blank" class="me-3" title="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/igor-moreira-b2b719208/" target="_blank" title="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>

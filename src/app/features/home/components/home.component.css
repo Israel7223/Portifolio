@@ -1,0 +1,444 @@
+.home-section {
+  /* Remover fundo sólido para permitir a visibilidade das partículas */
+  background: transparent;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px; /* Espaço para o header fixo */
+}
+
+/* Adicionar comportamento de rolagem suave na página */
+:host {
+  display: block;
+}
+
+:host ::ng-deep html {
+  scroll-behavior: smooth;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  /* Remover background-color para mostrar partículas */
+  background-color: transparent;
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  margin-top: 20px; /* Para garantir que fique abaixo do header */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.main-title {
+  font-size: 5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2; /* Garantir que fique abaixo do header (header tem z-index 1000) */
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.location-text {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.hire-btn {
+  padding: 14px 35px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  background-color: rgba(0, 229, 160, 0.2);
+  border: 1px solid rgba(0, 229, 160, 0.4);
+  color: #ffffff;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15), 0 0 10px rgba(0, 229, 160, 0.1);
+  z-index: 2;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.8s;
+  cursor: pointer;
+}
+
+.hire-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.2) 0%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hire-btn:hover {
+  background-color: rgba(0, 229, 160, 0.7);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 229, 160, 0.2);
+  color: #ffffff;
+}
+
+/* Nova seta tipo chevron minimalista */
+.scroll-indicator {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  margin-top: auto;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1s;
+}
+
+.scroll-arrow {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: relative;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  background-color: rgba(0, 229, 160, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 8px rgba(0, 229, 160, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-arrow:before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+  transform: rotate(-45deg) translateY(-2px);
+}
+
+.scroll-arrow:hover {
+  opacity: 1;
+  transform: translateY(5px);
+  background-color: rgba(0, 229, 160, 0.3);
+  box-shadow: 0 0 12px rgba(0, 229, 160, 0.2);
+}
+
+/* Animação ao clicar na seta */
+.animate-arrow {
+  animation: click-arrow 0.8s ease forwards !important;
+}
+
+@keyframes click-arrow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  30% {
+    transform: scale(1.3);
+    opacity: 1;
+    background-color: rgba(0, 229, 160, 0.5);
+    box-shadow: 0 0 20px rgba(0, 229, 160, 0.4);
+  }
+  70% {
+    transform: scale(1.1) translateY(15px);
+    opacity: 0.9;
+    background-color: rgba(0, 229, 160, 0.3);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.8;
+  }
+}
+
+/* Animação de pulsação suave para a seta */
+.scroll-arrow {
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(0, 229, 160, 0.2);
+  }
+  50% {
+    transform: translateY(12px);
+    box-shadow: 0 0 25px rgba(0, 229, 160, 0.4);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(0, 229, 160, 0.2);
+  }
+}
+
+/* Animações para entrada suave */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Adicionar uma animação de destaque para a seção que está sendo rolada */
+.scroll-highlight {
+  /* Efeito de highlight removido */
+  animation: none;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 3.5rem;
+  }
+  
+  .welcome-text, .location-text {
+    font-size: 1.2rem;
+  }
+  
+  .scroll-indicator {
+    bottom: 70px;
+  }
+  
+  .hire-btn {
+    margin-bottom: 60px;
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .welcome-text, .location-text {
+    font-size: 1rem;
+  }
+  
+  .hire-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+  
+  .scroll-arrow {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .scroll-arrow:before {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.hero-section {
+  position: relative;
+  padding: 180px 0;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Melhorias de responsividade para a seção Home */
+@media (max-width: 1200px) {
+  .home-section {
+    padding: 180px 0 150px;
+  }
+  
+  .home-content h1 {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .home-content h2 {
+    font-size: 24px;
+  }
+  
+  .home-content p {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 991px) {
+  .home-section {
+    padding: 160px 0 130px;
+    text-align: center;
+  }
+  
+  .home-content h1 {
+    font-size: 42px;
+  }
+  
+  .home-content h2 {
+    font-size: 22px;
+  }
+  
+  .home-content p {
+    font-size: 15px;
+    margin: 0 auto 20px;
+    max-width: 600px;
+  }
+  
+  .home-buttons {
+    justify-content: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-section {
+    padding: 120px 0 100px;
+  }
+  
+  .home-content h1 {
+    font-size: 36px;
+  }
+  
+  .home-content h2 {
+    font-size: 20px;
+  }
+  
+  .home-content p {
+    font-size: 14px;
+  }
+  
+  .home-buttons .btn {
+    padding: 10px 25px;
+    font-size: 15px;
+    margin: 0 8px 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home-section {
+    padding: 100px 0 80px;
+  }
+  
+  .home-content h1 {
+    font-size: 30px;
+  }
+  
+  .home-content h2 {
+    font-size: 18px;
+  }
+  
+  .home-content p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .home-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-buttons .btn {
+    margin: 5px 0;
+    width: 80%;
+  }
+  
+  .social-icons {
+    margin-top: 20px;
+  }
+  
+  .social-icons a {
+    margin: 0 5px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 600px) {
+  .hero-section {
+    padding: 70px 0;
+    min-height: 550px;
+  }
+  
+  .hero-content h1 {
+    font-size: 28px;
+  }
+  
+  .hero-content p {
+    margin: 10px auto;
+  }
+  
+  .scroll-down-arrow {
+    bottom: 15px;
+  }
+}
+
+/* Remover margens e paddings entre as seções que são filhas do componente home */
+:host ::ng-deep app-about,
+:host ::ng-deep app-what-i-do,
+:host ::ng-deep app-resume,
+:host ::ng-deep app-portfolio,
+:host ::ng-deep app-contact {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  position: relative;
+}
+
+/* Remover decorações que possam estar criando divisores */
+:host ::ng-deep .section-title::before,
+:host ::ng-deep .section-title::after,
+:host ::ng-deep section::before,
+:host ::ng-deep section::after {
+  display: none !important;
+}
+
+/* Remover linhas decorativas */
+:host ::ng-deep .title-underline {
+  display: none !important;
+}
+

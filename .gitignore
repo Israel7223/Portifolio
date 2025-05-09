@@ -1,0 +1,46 @@
+# Arquivos de ambiente
+.env
+.env.production
+.env.local
+.env.development
+.env.test
+
+# Scripts de configuração contendo credenciais
+setup-env-production.sh
+
+# Service account key
+src/serviceAccountKey.json
+
+# Diretórios e arquivos gerados pelo Angular
+/dist
+/.angular
+/node_modules
+/tmp
+/out-tsc
+/.sass-cache
+
+# IDEs e editores
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Arquivos diversos
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+.DS_Store
+Thumbs.db 

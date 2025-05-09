@@ -1,0 +1,423 @@
+/* Configuração inicial para evitar flash branco */
+:host {
+  display: block;
+  background-color: transparent;
+}
+
+.resume-section {
+  padding: 30px 0;
+  background-color: transparent;
+  color: #ffffff;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.resume-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.resume-section::before {
+  display: none;
+}
+
+.section-title {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.section-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(0, 229, 160, 0.5);
+  position: relative;
+}
+
+.section-title h2::after {
+  display: none;
+}
+
+.title-underline {
+  display: none;
+}
+
+.section-subtitle {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  text-shadow: 0 0 10px rgba(0, 229, 160, 0.3);
+}
+
+.section-subtitle.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline {
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-item {
+  background-color: rgba(16, 33, 65, 0.4);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.timeline-item::before {
+  display: none;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 229, 160, 0.1);
+  background-color: rgba(16, 33, 65, 0.5);
+  border: 1px solid rgba(0, 229, 160, 0.3);
+}
+
+.years-badge {
+  display: inline-block;
+  background-color: rgba(0, 229, 160, 0.2);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(0, 229, 160, 0.3);
+  box-shadow: 0 0 15px rgba(0, 229, 160, 0.2);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .years-badge {
+  background-color: rgba(0, 229, 160, 0.3);
+  box-shadow: 0 0 20px rgba(0, 229, 160, 0.4);
+}
+
+.degree-title, .position-title {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .degree-title,
+.timeline-item:hover .position-title {
+  color: #00e5a0;
+  transform: translateY(-3px);
+}
+
+.institution, .company {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #00e5a0;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 8px rgba(0, 229, 160, 0.4);
+}
+
+.timeline-item:hover .institution,
+.timeline-item:hover .company {
+  color: #ffffff;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .description {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Animação de destaque quando a seção é alvo de scroll */
+.scroll-highlight {
+  animation: none;
+}
+
+/* Delay para os itens de timeline baseado em seu índice */
+.timeline-item[data-index="0"].visible { transition-delay: 250ms; }
+.timeline-item[data-index="1"].visible { transition-delay: 350ms; }
+.timeline-item[data-index="2"].visible { transition-delay: 450ms; }
+.timeline-item[data-index="3"].visible { transition-delay: 550ms; }
+.timeline-item[data-index="4"].visible { transition-delay: 650ms; }
+.timeline-item[data-index="5"].visible { transition-delay: 750ms; }
+
+/* Adicionar os estilos para a seção de skills */
+
+.skills-container {
+  margin-bottom: 40px;
+}
+
+.skill-item {
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 12px 20px;
+  background-color: rgba(16, 33, 65, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.skill-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 229, 160, 0.1);
+  background-color: rgba(16, 33, 65, 0.5);
+  border: 1px solid rgba(0, 229, 160, 0.2);
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-name {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 0 0 10px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-years {
+  font-size: 0.9rem;
+  color: rgba(0, 229, 160, 0.9);
+  font-weight: 400;
+  margin-left: 5px;
+  text-shadow: 0 0 8px rgba(0, 229, 160, 0.4);
+}
+
+.skill-item:hover .skill-name {
+  color: #00e5a0;
+  transform: translateX(5px);
+  text-shadow: 0 0 8px rgba(0, 229, 160, 0.6);
+}
+
+.skill-item:hover .skill-years {
+  color: #ffffff;
+}
+
+.years-experience {
+  font-size: 14px;
+  color: #00e5a0;
+  font-weight: 600;
+  background-color: rgba(0, 229, 160, 0.1);
+  padding: 5px 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 229, 160, 0.3);
+  box-shadow: 0 0 10px rgba(0, 229, 160, 0.1);
+}
+
+.skill-item:hover .years-experience {
+  background-color: rgba(0, 229, 160, 0.2);
+  box-shadow: 0 0 15px rgba(0, 229, 160, 0.3);
+  color: #ffffff;
+}
+
+.btn-download {
+  background-color: rgba(0, 229, 160, 0.2);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(20px);
+  opacity: 0;
+  border: 1px solid rgba(0, 229, 160, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 229, 160, 0.2);
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-download::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.2) 0%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn-download.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.btn-download:hover {
+  background-color: rgba(0, 229, 160, 0.7);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 229, 160, 0.4);
+  color: #ffffff;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .resume-section {
+    padding: 80px 0;
+  }
+  
+  .section-title h2 {
+    font-size: 2.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-section::before {
+    font-size: 100px;
+  }
+  
+  .timeline-item {
+    padding: 25px;
+  }
+  
+  .section-title h2 {
+    font-size: 2.2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.6rem;
+  }
+  
+  .degree-title, .position-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    margin-bottom: 50px;
+  }
+  
+  .section-title h2 {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .timeline-item {
+    padding: 20px;
+  }
+  
+  .years-badge {
+    font-size: 0.8rem;
+    padding: 5px 15px;
+  }
+}
+
+.service-icon {
+  box-shadow: 0 0 8px rgba(0, 229, 160, 0.1);
+}
+
+.service-item:hover .service-icon {
+  box-shadow: 0 0 10px rgba(0, 229, 160, 0.2);
+}
+
+.skill-progress .progress-bar {
+  box-shadow: 0 0 8px rgba(0, 229, 160, 0.2);
+}
+
+.skill-progress:hover .progress-bar {
+  box-shadow: 0 0 10px rgba(0, 229, 160, 0.2);
+}

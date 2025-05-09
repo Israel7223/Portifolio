@@ -1,0 +1,23 @@
+{
+  "title": "Minha Formação",
+  "items": [
+    {
+      "years": "2000 - 2004",
+      "degree": "Ciência da Computação",
+      "institution": "Universidade Internacional",
+      "description": "Foco em algoritmos, estruturas de dados e fundamentos da computação com especialização em análise de dados."
+    },
+    {
+      "years": "2005 - 2008",
+      "degree": "Bacharelado",
+      "institution": "Universidade da Califórnia",
+      "description": "Estudou matemática avançada, estatística e programação com honras em aplicações de ciência de dados."
+    },
+    {
+      "years": "2009 - 2012",
+      "degree": "Mestrado",
+      "institution": "Universidade Harvard",
+      "description": "Especializado em aprendizado de máquina e inteligência artificial com pesquisa em processamento de linguagem natural."
+    }
+  ]
+} 

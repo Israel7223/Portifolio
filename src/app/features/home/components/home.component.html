@@ -1,0 +1,50 @@
+<section id="home" class="home-section">
+  <div class="overlay">
+    <div class="container">
+      <!-- Indicador de carregamento enquanto as traduções não estão prontas -->
+      <div *ngIf="!isTranslationLoaded" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Carregando...</span>
+        </div>
+      </div>
+      
+      <!-- Conteúdo principal, exibido apenas quando as traduções estiverem carregadas -->
+      <div class="row align-items-center" [ngClass]="{'d-none': !isTranslationLoaded}">
+        <div class="col-md-8 mx-auto text-center text-white">
+          <h6 class="welcome-text">{{ 'home.welcome' | translate }}</h6>
+          <h1 class="main-title">I'm a {{position}}.</h1>
+          <p class="location-text">{{ 'home.basedIn' | translate }} {{location}}.</p>
+          <a href="#about" (click)="scrollToAbout()" class="btn btn-primary hire-btn mt-4" role="button" tabindex="0" aria-label="Saiba mais" data-section="about">{{ 'home.learnMore' | translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow" 
+           (click)="scrollToAbout()" 
+           (keydown.enter)="scrollToAbout()"
+           (keydown.space)="scrollToAbout(); $event.preventDefault()"
+           role="button" 
+           tabindex="0" 
+           aria-label="Rolar para a seção sobre" 
+           data-section="about"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Incluindo o componente About diretamente na página inicial -->
+<app-about id="about"></app-about>
+
+<!-- Incluindo o componente O Que Faço após a seção sobre -->
+<app-what-i-do id="what-i-do"></app-what-i-do>
+
+<!-- Incluindo o componente Resume após a seção O Que Faço -->
+<app-resume id="resume"></app-resume>
+
+<!-- Incluindo o componente Project após a seção Resume -->
+<app-project id="project"></app-project>
+
+<!-- Incluindo o componente Certificates após a seção Project -->
+<app-certificates id="certificates"></app-certificates>
+
+<!-- Incluindo o componente Contact no final da página -->
+<app-contact id="contact"></app-contact>

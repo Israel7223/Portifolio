@@ -1,0 +1,37 @@
+<section id="what-i-do" class="services-section" #servicesSection>
+  <div class="container">
+    <div class="section-title" #sectionTitle>
+      <h2>{{ 'whatIDo.title' | translate }}</h2>
+      <div class="title-underline" #titleUnderline></div>
+    </div>
+
+    <div class="services-container">
+      <ng-container *ngIf="services.length > 0; else fallbackServices">
+        <div class="service-item" #serviceItem *ngFor="let service of services; let i = index" [attr.data-index]="i">
+          <div class="service-icon">
+            <i class="{{ service.iconClass }}"></i>
+          </div>
+          <h3>{{ getLocalizedTitle(service) }}</h3>
+          <p>{{ getLocalizedDescription(service) }}</p>
+        </div>
+      </ng-container>
+
+      <ng-template #fallbackServices>
+        <div class="service-item" #serviceItem *ngFor="let i of [0,1,2,3,4,5]" [attr.data-index]="i">
+          <div class="service-icon">
+            <i [ngClass]="{
+              'bi bi-bar-chart-line-fill': i === 0,
+              'bi bi-cpu-fill': i === 1,
+              'bi bi-activity': i === 2,
+              'bi bi-phone-fill': i === 3,
+              'bi bi-graph-up-arrow': i === 4,
+              'bi bi-megaphone-fill': i === 5
+            }"></i>
+          </div>
+          <h3>{{ 'whatIDo.services.' + i + '.title' | translate }}</h3>
+          <p>{{ 'whatIDo.services.' + i + '.description' | translate }}</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>

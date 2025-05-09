@@ -1,0 +1,131 @@
+<section id="certificates" class="certificates-section">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>{{ 'certificates.title' | translate }}</h2>
+      <div class="title-underline"></div>
+      <p class="section-description">{{ 'certificates.subtitle' | translate }}</p>
+    </div>
+    
+    <!-- Loading state -->
+    @if (loading) {
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>{{ 'certificates.loading' | translate }}</p>
+      </div>
+    }
+    
+    <!-- Error state -->
+    @if (error) {
+      <div class="error-container">
+        <div class="error-icon">❌</div>
+        <p>{{ 'certificates.error' | translate }}</p>
+        <button class="btn-retry" (click)="loadCertificates()">
+          {{ 'certificates.retry' | translate }}
+        </button>
+      </div>
+    }
+    
+    <!-- No certificates state -->
+    @if (!loading && certificates.length === 0) {
+      <div class="no-certificates">
+        <p>{{ 'certificates.noCertificates' | translate }}</p>
+      </div>
+    }
+    
+    <!-- Certificates grid -->
+    @if (!loading && certificates.length > 0) {
+      <div class="certificates-grid">
+        @for (certificate of certificates; track certificate.id) {
+          <div class="certificate-card" 
+               role="button"
+               tabindex="0" 
+               (click)="selectCertificate(certificate)"
+               (keydown.enter)="selectCertificate(certificate)"
+               (keydown.space)="selectCertificate(certificate); $event.preventDefault()">
+            <div class="certificate-image">
+              <img [src]="certificate.imageUrl" [alt]="certificate.name" loading="lazy">
+              <div class="certificate-overlay">
+                <div class="view-button">
+                  <i class="bi bi-eye"></i>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-info">
+              <h3 class="certificate-name">{{ getLocalizedText(certificate.name) }}</h3>
+              <div class="certificate-details">
+                <p class="certificate-issuer">
+                  <i class="bi bi-building"></i> {{ certificate.issuer }}
+                </p>
+                <p class="certificate-date">
+                  <i class="bi bi-calendar3"></i> {{ formatDate(certificate.issueDate) }}
+                </p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      
+      <!-- Detalhes do certificado selecionado -->
+      @if (selectedCertificate) {
+        <div class="certificate-details-modal">
+          <div class="certificate-details-content">
+            <div class="certificate-details-header">
+              <h3>{{ getLocalizedText(selectedCertificate.name) }}</h3>
+              <button class="close-details" (click)="closeDetails()">
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </div>
+            
+            <div class="certificate-details-body">
+              <div class="certificate-image-large">
+                <img [src]="selectedCertificate.imageUrl" [alt]="selectedCertificate.name">
+              </div>
+              
+              <div class="certificate-info-details">
+                <div class="info-row">
+                  <span class="info-label">{{ 'certificates.issuer' | translate }}:</span>
+                  <span class="info-value">{{ selectedCertificate.issuer }}</span>
+                </div>
+                
+                <div class="info-row">
+                  <span class="info-label">{{ 'certificates.issueDate' | translate }}:</span>
+                  <span class="info-value">{{ formatDate(selectedCertificate.issueDate) }}</span>
+                </div>
+                
+                <div class="info-row">
+                  <span class="info-label">{{ 'certificates.credential' | translate }}:</span>
+                  <span class="info-value">{{ selectedCertificate.credentialId }}</span>
+                </div>
+                
+                @if (selectedCertificate.description) {
+                  <div class="certificate-description">
+                    <p>{{ getLocalizedText(selectedCertificate.description) }}</p>
+                  </div>
+                }
+                
+                @if (selectedCertificate.skills && selectedCertificate.skills.length > 0) {
+                  <div class="certificate-skills">
+                    <h4>Skills</h4>
+                    <div class="skills-badges">
+                      @for (skill of selectedCertificate.skills; track skill) {
+                        <span class="skill-badge">{{ skill }}</span>
+                      }
+                    </div>
+                  </div>
+                }
+                
+                <div class="certificate-actions">
+                  <a [href]="selectedCertificate.certificateUrl" 
+                    target="_blank" 
+                    class="btn btn-view-certificate">
+                    <i class="bi bi-file-earmark-text"></i> {{ 'certificates.viewCertificate' | translate }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</section> 

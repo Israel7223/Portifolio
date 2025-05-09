@@ -1,0 +1,778 @@
+/* Estilos para a seção de portfolio */
+.portfolio-section {
+  padding: 100px 0;
+  background-color: var(--background-alt);
+  min-height: 100vh;
+  position: relative;
+}
+
+.portfolio-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 120, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos para o título da seção */
+.section-title {
+  margin-bottom: 70px;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.8s ease forwards;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px rgba(0, 120, 255, 0.5);
+  position: relative;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 120, 255, 0.1);
+  filter: blur(20px);
+  z-index: -1;
+  top: -10px;
+  left: calc(50% - 30px);
+}
+
+.section-description {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.title-underline {
+  height: 4px;
+  width: 80px;
+  background-color: var(--primary-color);
+  margin: 15px auto 25px;
+  transform: scaleX(0);
+  animation: expandWidth 1s ease 0.3s forwards;
+  box-shadow: 0 0 8px var(--primary-color);
+}
+
+@keyframes expandWidth {
+  to { transform: scaleX(1); }
+}
+
+/* Loading state */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* No projects state */
+.no-projects {
+  text-align: center;
+  padding: 50px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+/* Estilos para o carousel de projetos */
+.carousel-container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.carousel-track.dragging {
+  transition: none;
+  cursor: grabbing;
+}
+
+/* Botões de navegação do carousel */
+.carousel-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 20px;
+  position: relative;
+  overflow: visible;
+}
+
+.carousel-control {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+  opacity: 0.9;
+  transform: translateY(0);
+  position: relative;
+}
+
+.carousel-control:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: translateY(-2px);
+  opacity: 1;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-control.prev {
+  left: 20px;
+}
+
+.carousel-control.next {
+  right: 20px;
+}
+
+/* Navegação do carousel */
+.carousel-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 10px;
+  overflow: visible;
+  position: relative;
+  z-index: 5;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0.8;
+  transform: scale(0.8);
+  transition-delay: calc(0.1s * var(--index, 0));
+  position: relative;
+  z-index: 2;
+}
+
+.nav-dot.active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+  opacity: 1;
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.nav-dot:hover {
+  opacity: 0.8;
+  transform: scale(1);
+  box-shadow: 0 0 5px rgba(0, 229, 160, 0.5);
+}
+
+/* Estilos para os cards de projetos */
+.project-card {
+  min-width: 320px;
+  max-width: 320px;
+  height: 470px;
+  margin: 0 15px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(0.95);
+  opacity: 1;
+  transform-style: preserve-3d;
+  filter: blur(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05));
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card.active {
+  transform: scale(1);
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1);
+  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px 12px 0 0;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+  aspect-ratio: 16/9;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+}
+
+.project-links a {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #151921;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-card:hover .project-links a {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(0.05s * var(--index, 0));
+}
+
+.project-links a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: translateY(0) scale(1.1);
+}
+
+.project-info {
+  flex: 1;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.03);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover .project-info {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 4.2rem;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+  max-height: 4.8rem;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tech-badge {
+  font-size: 0.8rem;
+  background-color: rgba(0, 120, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 3px 10px;
+  border-radius: 15px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  transform: translateY(5px);
+  opacity: 0.8;
+  border: 1px solid rgba(0, 120, 255, 0.3);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.project-card:hover .tech-badge {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Detalhes do projeto */
+.project-details {
+  margin-top: 50px;
+  background-color: rgba(20, 30, 50, 0.7);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  backdrop-filter: blur(10px);
+}
+
+.project-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-details-header h3 {
+  font-size: 1.75rem;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.close-details {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-details:hover {
+  color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.project-details-body {
+  padding: 25px;
+}
+
+.project-image-large {
+  height: 300px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.project-image-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s ease;
+}
+
+.project-image-large:hover img {
+  transform: scale(1.05);
+}
+
+.project-description-full {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+.project-technologies-details {
+  margin-bottom: 25px;
+}
+
+.project-technologies-details h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.btn i {
+  margin-right: 8px;
+}
+
+.btn-github {
+  background-color: #24292e;
+  color: white;
+}
+
+.btn-demo {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Media queries para responsividade */
+@media (max-width: 1200px) {
+  .portfolio-section {
+    padding: 80px 0;
+  }
+
+  .section-title h2 {
+    font-size: 2.5rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .carousel-container {
+    max-width: 90%;
+  }
+
+  .project-card {
+    min-width: 300px;
+    max-width: 300px;
+    height: 440px;
+  }
+
+  .project-image {
+    height: 180px;
+  }
+}
+
+@media (max-width: 992px) {
+  .portfolio-section {
+    padding: 70px 0;
+  }
+
+  .section-title h2 {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    margin-bottom: 50px;
+  }
+
+  .carousel-track {
+    padding: 0 20px;
+  }
+
+  .project-card {
+    min-width: 280px;
+    max-width: 280px;
+    height: 420px;
+    margin: 0 10px;
+  }
+
+  .project-image {
+    height: 170px;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+    -webkit-line-clamp: 3;
+    max-height: 4rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+  }
+
+  .project-image-large {
+    height: 250px;
+  }
+
+  .carousel-buttons {
+    max-width: 90%;
+  }
+
+  .project-details {
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 60px 0;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    max-width: 95%;
+    font-size: 0.95rem;
+  }
+
+  .project-card {
+    min-width: 250px;
+    max-width: 250px;
+    height: 400px;
+    margin: 0 10px;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+    -webkit-line-clamp: 3;
+    max-height: 3.8rem;
+  }
+
+  .project-description {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    margin: 5px 0;
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .carousel-control {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .nav-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .project-details-header h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .portfolio-section {
+    padding: 50px 0;
+  }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+
+  .project-card {
+    min-width: 220px;
+    max-width: 220px;
+    height: 370px;
+    margin: 0 10px;
+  }
+
+  .project-image {
+    height: 130px;
+  }
+
+  .project-details {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .project-details-header h3 {
+    font-size: 18px;
+  }
+
+  .project-image-large {
+    height: 200px;
+  }
+
+  .tech-badge {
+    padding: 3px 8px;
+    font-size: 11px;
+    margin: 2px;
+  }
+
+  .carousel-buttons {
+    margin-bottom: 20px;
+  }
+
+  .carousel-control {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .carousel-navigation {
+    margin-top: 20px;
+    gap: 8px;
+  }
+
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .project-title {
+    font-size: 1rem;
+    -webkit-line-clamp: 3;
+    max-height: 3.6rem;
+  }
+}
+
+.portfolio-filter .btn:hover, 
+.portfolio-filter .btn.active {
+  box-shadow: 0 0 6px var(--primary-color);
+}
+
+/* Animação de destaque quando a seção é alvo de scroll */
+.scroll-highlight {
+  animation: none;
+}

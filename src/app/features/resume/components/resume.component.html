@@ -1,0 +1,91 @@
+<section id="resume" class="resume-section" #resumeSection>
+  <div class="container">
+    <div class="section-title text-center" #sectionTitle>
+      <h2>{{ 'resume.title' | translate }}</h2>
+      <div class="title-underline" #titleUnderline></div>
+    </div>
+
+    <!-- Indicadores de carregamento e erro -->
+    <div class="row mt-5" *ngIf="loading">
+      <div class="col-12 text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Carregando...</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5" *ngIf="error && !loading">
+      <div class="col-12 text-center">
+        <div class="alert alert-danger">
+          {{ 'resume.error.loading' | translate }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="row mt-5" *ngIf="!loading">
+      <!-- Seção Educação -->
+      <div class="col-lg-6">
+        <h3 class="section-subtitle" #sectionSubtitle>{{ 'resume.education.title' | translate }}</h3>
+        <div class="timeline">
+          <div class="timeline-item" #timelineItem *ngFor="let edu of education; let i = index" [attr.data-index]="i">
+            <div class="years-badge">
+              {{ edu.period }}
+            </div>
+            <div class="timeline-content">
+              <h4 class="degree-title">{{ getLocalizedText(edu.degree) }}</h4>
+              <h5 class="institution">{{ getLocalizedText(edu.institution) }}</h5>
+              <p class="description">{{ getLocalizedText(edu.description) }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção Experiência -->
+      <div class="col-lg-6">
+        <h3 class="section-subtitle" #sectionSubtitle>{{ 'resume.experience.title' | translate }}</h3>
+        <div class="timeline">
+          <div class="timeline-item" #timelineItem *ngFor="let exp of experience; let i = index" [attr.data-index]="i + 3">
+            <div class="years-badge">
+              {{ exp.period }}
+            </div>
+            <div class="timeline-content">
+              <h4 class="position-title">{{ getLocalizedText(exp.position) }}</h4>
+              <h5 class="company">{{ getLocalizedText(exp.company) }}</h5>
+              <p class="description">{{ getLocalizedText(exp.description) }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+    <!-- Seção de Skills -->
+    <div class="row mt-5" *ngIf="!loading">
+      <div class="col-12 text-center mb-4">
+        <h3 class="section-subtitle" #skillsTitle>{{ 'resume.skills.title' | translate }}</h3>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="skills-container">
+          <div class="skill-item" #skillItem *ngFor="let skill of skills.slice(0, Math.ceil(skills.length / 2)); let i = index" [attr.data-index]="i">
+            <div class="skill-info">
+              <h4 class="skill-name">{{ skill.name }} <span class="skill-years">({{ skill.years }} {{ 'resume.skills.years' | translate }})</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="skills-container">
+          <div class="skill-item" #skillItem *ngFor="let skill of skills.slice(Math.ceil(skills.length / 2)); let i = index" [attr.data-index]="i + Math.ceil(skills.length / 2)">
+            <div class="skill-info">
+              <h4 class="skill-name">{{ skill.name }} <span class="skill-years">({{ skill.years }} {{ 'resume.skills.years' | translate }})</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

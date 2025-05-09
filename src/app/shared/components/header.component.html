@@ -1,0 +1,83 @@
+<header class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home" (click)="scrollToSection($event, 'home')" (keydown.enter)="scrollToSection($event, 'home')" id="home-link" data-section="home">Israel</a>
+    <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- Spinner de carregamento enquanto as traduções não estiverem prontas -->
+    <div *ngIf="!isTranslationLoaded" class="d-flex justify-content-center flex-grow-1">
+      <div class="spinner-border spinner-border-sm text-light" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+    
+    <!-- Menu de navegação, exibido apenas quando as traduções estiverem carregadas -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav" [ngClass]="{'show': isOpen, 'd-none': !isTranslationLoaded}">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#home" (click)="scrollToSection($event, 'home')" 
+            (keydown.enter)="scrollToSection($event, 'home')"
+            [ngClass]="{'active': activeSection === 'home'}" tabindex="0" id="nav-home-link" data-section="home">
+            {{ 'navigation.home' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about" (click)="scrollToSection($event, 'about')" 
+            (keydown.enter)="scrollToSection($event, 'about')"
+            [ngClass]="{'active': activeSection === 'about'}" tabindex="0" data-section="about">
+            {{ 'navigation.about' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#what-i-do" (click)="scrollToSection($event, 'whatIDo')" 
+            (keydown.enter)="scrollToSection($event, 'whatIDo')"
+            [ngClass]="{'active': activeSection === 'whatIDo'}" tabindex="0" data-section="whatIDo">
+            {{ 'navigation.whatIDo' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#resume" (click)="scrollToSection($event, 'resume')" 
+            (keydown.enter)="scrollToSection($event, 'resume')"
+            [ngClass]="{'active': activeSection === 'resume'}" tabindex="0" data-section="resume">
+            {{ 'navigation.resume' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#project" (click)="scrollToSection($event, 'project')" 
+            (keydown.enter)="scrollToSection($event, 'project')"
+            [ngClass]="{'active': activeSection === 'project'}" tabindex="0" data-section="project">
+            {{ 'navigation.portfolio' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#certificates" (click)="scrollToSection($event, 'certificates')" 
+            (keydown.enter)="scrollToSection($event, 'certificates')"
+            [ngClass]="{'active': activeSection === 'certificates'}" tabindex="0" data-section="certificates">
+            {{ 'navigation.certificates' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact" (click)="scrollToSection($event, 'contact')" 
+            (keydown.enter)="scrollToSection($event, 'contact')"
+            [ngClass]="{'active': activeSection === 'contact'}" tabindex="0" data-section="contact">
+            {{ 'navigation.contact' | translate }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/israel-oliveira-45a025127/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/israelwcg011" target="_blank"><i class="bi bi-github"></i></a>
+      <a href="https://israeloliveira.vercel.app/" target="_blank"><i class="bi bi-newspaper"></i></a>
+      <div class="language-selector">
+        <a href="javascript:void(0)" (click)="changeLanguage('pt')" class="flag-link" aria-label="Mudar para Português">
+          <img src="https://flagcdn.com/32x24/br.png" alt="Bandeira do Brasil" [ngClass]="{'active-flag': currentLanguage === 'pt'}">
+        </a>
+        <a href="javascript:void(0)" (click)="changeLanguage('en')" class="flag-link" aria-label="Change to English">
+          <img src="https://flagcdn.com/32x24/us.png" alt="Bandeira dos EUA" [ngClass]="{'active-flag': currentLanguage === 'en'}">
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

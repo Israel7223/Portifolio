@@ -1,0 +1,52 @@
+<!-- Section About Start -->
+<section id="about" class="about-section" #aboutSection>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title" #sectionTitle>
+          <h3 class="know-me-more" #knowMeMore>{{ 'about.knowMeMore' | translate }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row about-content">
+      <div class="col-lg-7" #leftCol>
+        <!-- Loading state -->
+        <div *ngIf="loading" class="loading-text">
+          <p>Carregando informações...</p>
+        </div>
+        
+        <!-- Error state -->
+        <div *ngIf="error" class="error-text">
+          <p>Erro ao carregar informações.</p>
+        </div>
+        
+        <!-- Content from Firebase -->
+        <div *ngIf="!loading && !error">
+          <h3 #contentHeading>{{ 'about.iam' | translate }} <span class="text-highlight">{{ personalInfo.name }}</span>, {{ getLocalizedText('position') }}</h3>
+          <p #contentPara>{{ getLocalizedText('bio1') }}</p>
+          <p #contentPara>{{ getLocalizedText('bio2') }}</p>
+        </div>
+      </div>
+      <div class="col-lg-5" #rightCol>
+        <div class="personal-info" #personalInfoDiv>
+          <div class="info-item" #infoItem>
+            <span class="info-label">{{ 'about.name' | translate }}:</span>
+            <span>{{ personalInfo.name }}</span>
+          </div>
+          <div class="info-item" #infoItem>
+            <span class="info-label">{{ 'about.age' | translate }}:</span>
+            <span>{{ personalInfo.age }}</span>
+          </div>
+          <div class="info-item" #infoItem>
+            <span class="info-label">{{ 'about.from' | translate }}:</span>
+            <span>{{ personalInfo.location }}</span>
+          </div>
+          <div class="download-cv" #downloadCv>
+            <a href="javascript:void(0)" class="btn btn-primary" (click)="downloadResume()">{{ 'about.downloadCV' | translate }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section About End -->

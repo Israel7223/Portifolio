@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Portfólio Magaivin - Cientista de Dados</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfólio profissional de Magaivin, Cientista de Dados baseado em Brasília, Distrito Federal">
+  <meta name="keywords" content="ciência de dados, análise de dados, portfolio, magaivin, cientista de dados, desenvolvimento, data science">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/css/flag-icons.min.css" />
+  <style>
+    html, body {
+      background-color: transparent !important;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -100 !important; /* Valor de z-index muito menor */
+      background-color: #060f30;
+      background-image: linear-gradient(to bottom, #060f30, #000000);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+      pointer-events: none !important;
+    }
+    
+    /* Adicionar pointer-events none para canvas gerado pelo particles.js */
+    #particles-js canvas {
+      pointer-events: none !important;
+    }
+    
+    /* Garantir que todos os elementos principais tenham z-index maior que as partículas */
+    app-root, app-header, app-home {
+      position: relative;
+      z-index: 1;
+    }
+    
+    app-header {
+      z-index: 1000 !important; /* Garantir que o cabeçalho tenha prioridade alta */
+    }
+
+    /* Tornar fundo transparente em todas as seções */
+    section {
+      background-color: transparent !important;
+      min-height: 100vh; /* Altura mínima para evitar seções muito curtas */
+      padding-top: 80px; /* Espaço para o cabeçalho fixo */
+      box-sizing: border-box; /* Incluir padding no cálculo da altura */
+    }
+
+    /* Ajustar posicionamento das seções para melhor visualização */
+    #about, #what-i-do, #resume, #portfolio, #contact {
+      margin-top: 40px;
+      padding-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <app-root></app-root>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configurar particles.js
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 100,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#4fc3f7"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            }
+          },
+          "opacity": {
+            "value": 0.7,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 2,
+              "size_min": 0.3,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#4fc3f7",
+            "opacity": 0.2,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": false,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": false,
+              "mode": "push"
+            },
+            "resize": true
+          }
+        },
+        "retina_detect": true
+      });
+      
+      // Garantir que todos os elementos do particles.js tenham pointer-events: none
+      function ensureNoPointerEvents() {
+        const particlesContainer = document.getElementById('particles-js');
+        if (particlesContainer) {
+          particlesContainer.style.pointerEvents = 'none';
+          
+          // Aplicar pointer-events: none para o canvas dentro do particles-js
+          const canvas = particlesContainer.querySelector('canvas');
+          if (canvas) {
+            canvas.style.pointerEvents = 'none';
+          }
+        }
+        
+        // Garantir que o header tenha pointer-events: auto
+        const header = document.querySelector('header');
+        if (header) {
+          header.style.pointerEvents = 'auto';
+          
+          // Garantir que links no header também tenham pointer-events: auto
+          const headerLinks = header.querySelectorAll('a');
+          headerLinks.forEach(link => {
+            link.style.pointerEvents = 'auto';
+          });
+        }
+      }
+      
+      // Executar na inicialização
+      ensureNoPointerEvents();
+      
+      // Executar periodicamente para garantir que seja mantido
+      setInterval(ensureNoPointerEvents, 1000);
+    });
+  </script>
+  
+  <!-- Script unificado para navegação entre seções -->
+  <script>
+    // Criar um namespace global para as funções de navegação
+    window.PortfolioNavigation = {
+      // Função dedicada para rolagem para o topo
+      scrollToTop: function() {
+        // Usar várias abordagens para garantir que role para o topo
+        window.scrollTo(0, 0); // Abordagem simples
+        
+        // Abordagem com comportamento suave
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        
+        // Métodos alternativos (para garantir compatibilidade em diferentes navegadores)
+        document.body.scrollTop = 0; // Para Safari
+        document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
+      },
+      
+      // Função para mapear IDs de seção
+      getSectionId: function(section) {
+        // Mapeamento especial para 'whatIDo' -> 'what-i-do'
+        if (section === 'whatIDo') {
+          return 'what-i-do';
+        }
+        // Adicionar mais mapeamentos aqui conforme necessário
+        return section.toLowerCase();
+      },
+      
+      // Uma abordagem simplificada para rolagem
+      scrollToElement: function(elementId) {
+        // Caso especial para "home" ou "inicio" - rolar para o topo
+        if (elementId === 'home' || elementId === 'inicio') {
+          this.scrollToTop();
+          return;
+        }
+        
+        // Mapear ID se necessário
+        elementId = this.getSectionId(elementId);
+        
+        // Tentar encontrar o elemento de várias maneiras
+        let element = document.getElementById(elementId);
+        
+        if (!element) {
+          element = document.querySelector(`section#${elementId}`);
+        }
+        
+        if (!element) {
+          element = document.querySelector(`[id="${elementId}"]`);
+        }
+        
+        if (element) {
+          const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+          
+          // Primeiro usar scrollIntoView
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Depois ajustar para compensar o header
+          setTimeout(function() {
+            const currentPos = window.scrollY;
+            window.scrollTo({
+              top: currentPos - headerHeight - 40, // Mesmos 40px do componente
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
+      },
+      
+      // Inicializar todos os listeners e handlers
+      init: function() {
+        const self = this;
+        
+        // Interceptar cliques em links com hashtag
+        document.body.addEventListener('click', function(e) {
+          // Verificar se o clique foi em um link
+          if (e.target && e.target.tagName === 'A') {
+            const href = e.target.getAttribute('href');
+            
+            // Verificar se é um link com hashtag
+            if (href && href.startsWith('#')) {
+              // Verificar se está dentro do cabeçalho
+              const isHeader = e.target.closest('app-header') || e.target.closest('header');
+              
+              // Se estiver no cabeçalho, deixamos o componente Angular cuidar disso
+              if (isHeader) {
+                return;
+              }
+              
+              // Para links que não estão no cabeçalho, usamos nossa própria rolagem
+              const targetId = href.slice(1); // Remover o caractere '#'
+              self.scrollToElement(targetId);
+              e.preventDefault(); // Impedir navegação padrão
+            }
+          }
+        });
+        
+        // Adicionar listener para os links de início/home
+        function addHomeClickListener() {
+          // Link do logotipo (navbar-brand)
+          const homeLink = document.getElementById('home-link');
+          if (homeLink) {
+            homeLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              self.scrollToTop();
+            });
+          }
+          
+          // Link de navegação Início/Home
+          const navHomeLink = document.getElementById('nav-home-link');
+          if (navHomeLink) {
+            navHomeLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              self.scrollToTop();
+            });
+          }
+          
+          // Tentar novamente se os elementos não forem encontrados imediatamente
+          if (!homeLink || !navHomeLink) {
+            setTimeout(addHomeClickListener, 1000);
+          }
+        }
+        
+        // Iniciar a adição dos listeners
+        addHomeClickListener();
+        
+        // Adicionar detector de atributos data-section para facilitar a navegação
+        document.addEventListener('click', function(e) {
+          const target = e.target.closest('[data-section]');
+          if (target) {
+            const section = target.getAttribute('data-section');
+            if (section) {
+              e.preventDefault();
+              self.scrollToElement(section);
+            }
+          }
+        });
+      }
+    };
+    
+    // Inicializar o sistema de navegação quando o DOM estiver pronto
+    document.addEventListener('DOMContentLoaded', function() {
+      window.PortfolioNavigation.init();
+    });
+  </script>
+</body>
+</html>
