@@ -44,13 +44,9 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -75,7 +71,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "namedChunks": true,
+              "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,

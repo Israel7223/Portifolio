@@ -1,13 +1,13 @@
 [build]
-command = "npm install --legacy-peer-deps && npm run build"
+command = "npm install --no-corepack --legacy-peer-deps --no-fund --no-audit && npm run build --no-corepack"
 destination = "dist/cloudflare"
 node_compatibility_date = "2023-11-21"
-node_version = "18.17.1"
+node_version = "16.20.0"
 
 [build.environment]
-NODE_VERSION = "18.17.1"
-NODE_OPTIONS = "--max-old-space-size=4096"
-NPM_CONFIG_LEGACY_PEER_DEPS = "true"
+NODE_VERSION = "16.20.0"
+SKIP_COREPACK = "true"
+NPM_FLAGS = "--no-corepack --legacy-peer-deps --no-fund --no-audit"
 
 [site]
 output = "dist/cloudflare" 
