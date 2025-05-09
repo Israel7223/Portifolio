@@ -1,9 +1,9 @@
 [build]
-command = "npm install --legacy-peer-deps && npm run build:cloudflare"
+command = "chmod +x build-cloudflare.sh && ./build-cloudflare.sh"
 publish = "dist/cloudflare"
-node_version = "18.17.1"
+node_version = "16.20.0"
 
 [build.environment]
-NODE_VERSION = "18.17.1"
+NODE_VERSION = "16.20.0"
 NODE_OPTIONS = "--max-old-space-size=4096"
 NPM_CONFIG_LEGACY_PEER_DEPS = "true" 
