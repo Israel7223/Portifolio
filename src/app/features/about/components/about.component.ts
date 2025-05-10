@@ -171,13 +171,13 @@ export class AboutComponent implements AfterViewInit, OnInit, OnDestroy {
   downloadResume(): void {
     if (!isPlatformBrowser(this.platformId)) return;
     
-    // Usar apenas o currículo em português, sem verificar o idioma
-    const resumeUrl = 'assets/docs/curriculo-israel-eustaquio.pdf';
+    // Usar o currículo com o caminho correto
+    const resumeUrl = 'assets/docs/curriculo_israel_oliveira.pdf';
     
     // Criar um link invisível e clicar nele
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.download = 'curriculo-israel-eustaquio.pdf';
+    link.download = 'curriculo_israel_oliveira.pdf';
     document.body.appendChild(link);
     link.click();
     
